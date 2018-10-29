@@ -1,0 +1,47 @@
+{
+  "204372456339800065": {
+    "nick": "Legofury",
+    "played": 8,
+    "won": 3,
+    "lost": 2,
+    "tied": 0,
+    "quit": 3,
+    "netwin": -110,
+    "bank": 27.4,
+    "banned": false,
+    "can": [],
+    "rated": 0,
+    "rating": 0,
+    "current": {}
+  },
+  "435064556159631400": {
+    "nick": "kingkong",
+    "played": 7,
+    "won": 5,
+    "lost": 1,
+    "tied": 0,
+    "quit": 1,
+    "netwin": 6,
+    "bank": 27.9,
+    "banned": false,
+    "can": [],
+    "rated": 0,
+    "rating": 0,
+    "current": {}
+  },
+  "213486737769365514": {
+    "nick": "Kappa",
+    "played": 1,
+    "won": 0,
+    "lost": 1,
+    "tied": 0,
+    "quit": 0,
+    "netwin": 0,
+    "bank": 0,
+    "banned": false,
+    "can": [],
+    "rated": 0,
+    "rating": 0,
+    "current": {}
+  }
+}
