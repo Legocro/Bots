@@ -125,24 +125,9 @@ function gameAny(game,m,player){
 
 //{commands
 const help={
-	echo:'syntax: echo <message>\nreplies with <message>',
 	help:'syntax: help <command*>\nprovides help on either all commands or a specified command',
 	ping:'syntax: ping\nreplies with "pong"',
-	rng:'syntax: rng <sides*>\nrolls an n sided die, default is 6',
 	stats:'syntax: stats <username*>\ngives statistics on either you or a specified user',
-	subjects:'syntax: subjects\nlists all the valid mentor subjects',
-	vote:'syntax: vote\ngives you a daily $5 for voting on the bot',
-	
-	mentor:"```md\n"+pre+"mentor\n=======\n * The prefix "+pre+"mentor must be used at the beginning of all of these *\n\n"+
-			"<blank>- gives personal stats on your mentoring\n\n"+
-			"help <details> - Submits a help request to potential mentors to DM you help. Use detail to describe what you need help with.\n\n"+
-			"rate <@user> <#1-10> - Acknowledges that this user helped you, closing your help request and giving them an appropriate rating\n\n"+
-			"can <subject(s)> - Specifies subjects that you feel qualified and willing to help people with\n\n"+
-			"can't <subject(s)> - Specifies subjects that you no longer feel qualified to help people with\n\n"+
-			"ticket <@user> - Pulls <@user>'s ticket marking you as their current mentor\n\n"+
-			"<subject> - Displays the first 10 mentor requests under the subject <subject>\n\n"+
-		"\n```",
-	
 	bank:'syntax: bank\ntells you how much you have in your bank',
 	game:'syntax: game list\nlists the currently supported games',
 	open:'syntax: open games\nlists all open games',
@@ -183,12 +168,6 @@ const GeneralCommands = {
         await CoinManager.sendCoins(amount, address);
         return (`${amount} Coin2Play has been sent to: ${address}\n ${amount*1.05} has been deducted from your account`)
     },
-	emote:function(msg,args){
-		return('<'+msg.content.split(' ')[1]+'>');
-	},
-	version:function(){
-		return("https://github.com/EFHIII/gambit");
-	},
 	help:function(msg,args){
 		if(args.length===0){
 			msg.author.send("```md\nHelp\n====\n * The prefix "+pre+" must be used at the beginning of any bot command *\n\n"+
@@ -196,16 +175,9 @@ const GeneralCommands = {
                 "address  Get your unique Coin2Play address to deposit coins into\n\n" +
                 "register  Register the deposited coins to your account\n\n" +
                 "withdraw <amount> <address> Withdraw coins from the bot to the address\n\n"+
-				"echo  <message>- have the bot repeat a phrase\n\n"+
 				"help <command*> - The help command, with an optional command specific help argument\n\n"+
 				"ping - responds with 'pong'\n\n"+
-				"rng <sides> - rolls an n sided die, default is 6'\n\n"+
 				"stats <username*> - gives you stats on a given user. Default is yourself\n\n"+
-				"version - links the bot's source code\n\n"+
-				"vote - gives you a daily $5 for voting on the bot\n\n"+
-			"Utility Commands\n================\n"+
-				"subjects - lists all valid mentor subjects\n\n"+
-				"mentor <mentor-command*> - a prefix for all the mentor commands; for more details: "+pre+"help mentor\n\n"+
 			"Game Commands\n=============\n"+
 				"bank - tells you how much you have in your bank\n\n"+
 				"game list - lists the currently supported games\n\n"+
@@ -225,26 +197,6 @@ const GeneralCommands = {
 	},
 	ping:function(){
 		return('Ping!');
-	},
-	echo:function(msg,args){
-		if(args.join(' ')===''){
-			return('*silence*');
-		}
-		return(msg.content.replace(pre+'echo ',''));
-	},
-	rng:function(msg,args){
-		if(args.length===0){
-			return('You rolled a '+Math.floor(Math.random()*6+1)+'!');
-		}
-		else{
-			return('You rolled a '+Math.floor(Math.random()*parseInt(args[0])+1)+'!');
-		}
-	},
-	'yes!':function(){
-		return('YES!');
-	},
-	yes:function(){
-		return('YES!');
 	}
 };
 const GameCommands={
@@ -273,7 +225,7 @@ const GameCommands={
 		}
 		users[msg.author.id].bank+=5;
 		return('You can vote here! Here\'s $5 for your troubles.\nhttps://discordbots.org/bot/395669095665762304/vote');
-	},*/
+	},
 	subjects:function(){
 		return(subjects.join(', '));
 	},
