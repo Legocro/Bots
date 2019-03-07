@@ -27,19 +27,23 @@ class DatabaseClient {
     }
 
     async setPoints(id, points) {
+	this.createRow(id);
         let success = await this.sql.run(`UPDATE Coins SET Coins = ${points} WHERE UserId = "${id}"`).catch(e => console.error(e));
     }
 
     async addPoints(id, points) {
+	this.createRow(id);
         let currentPoints = await this.getPoints(id);
         this.setPoints(id, currentPoints + points);
     }
 
     async setAddress(id, address) {
+	this.createRow(id);
         let success = await this.sql.run(`UPDATE Coins SET Address = "${address}" WHERE UserId = "${id}"`).catch(console.error);
     }
 
     async getLastBalance(id) {
+	this.createRow(id);
         let row = await this.sql.get(`SELECT LastBalance FROM Coins WHERE UserId = "${id}"`).catch(console.error);
         return row.LastBalance;
     }

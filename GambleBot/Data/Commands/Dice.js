@@ -4,10 +4,10 @@ const file = {
         let embed = new Embed();
         let numberOfDice = 2;
         let playerResult = parseInt(Arguments[0]);
-        let coinsToBet = parseInt(Arguments[1]);
+        let coinsToBet = parseFloat(Arguments[1]);
         if (Number.isNaN(coinsToBet) || Number.isNaN(playerResult)) return Message.channel.send("Proper usage is: \`>Dice result coins\`")
-        let playerTotalCoins = await Client._Client.DatabaseClient.getPoints(Message.author.id);
-        if (coinsToBet > playerTotalCoins) return Message.channel.send(`You can't bet ${coinsToBet} Coins because you only have ${playerTotalCoins}.`);
+        let playerTotalCoins = parseFloat(await Client._Client.DatabaseClient.getPoints(Message.author.id));
+        if (coinsToBet*1.01 > playerTotalCoins) return Message.channel.send(`You can't bet ${coinsToBet} Coins because you only have ${playerTotalCoins}.`);
         playerTotalCoins -= coinsToBet*1.01;
         let totalCoefficient = Math.pow(1.2, numberOfDice);
         let totalScore = 0;
@@ -22,9 +22,9 @@ const file = {
             .addField("Result", totalScore, true)
             .addField("Your guess", playerResult, true);
         if (totalScore == playerResult) {
-            let wonCoins = coinsToBet * totalCoefficient - coinsToBet; 
+            let wonCoins = coinsToBet * 2  - coinsToBet; 
             wonCoins = wonCoins.toPrecision(10);
-            playerTotalCoins += wonCoins + coinsToBet
+            playerTotalCoins += parseFloat(wonCoins) + parseFloat(coinsToBet);
             await Client._Client.DatabaseClient.setPoints(Message.author.id, playerTotalCoins);
             embed.addField("Coins won", wonCoins);
             embed.addField("Roll result", "WON");

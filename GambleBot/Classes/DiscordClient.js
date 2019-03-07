@@ -10,6 +10,7 @@ class DiscordClient extends Discord.Client {
         this.on("ready", function () {
             console.log("Ready!");
         })
+	this.on("error", console.error);
         this.MessageHandler = new MessageHandler(this);
     }
 

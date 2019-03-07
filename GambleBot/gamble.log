@@ -1,0 +1,20 @@
+Commands Loaded
+Ready!
+Command failed: coin2play-cli sendtoaddress cAdASfYK6zoRWkKczp2eEfwH3YohPsFNfZ NaN
+error: Error parsing JSON:NaN
+
+Command failed: coin2play-cli sendtoaddress undefined NaN
+error: Error parsing JSON:NaN
+
+Command failed: coin2play-cli sendtoaddress undefined NaN
+error: Error parsing JSON:NaN
+
+Command failed: coin2play-cli sendtoaddress undefined NaN
+error: Error parsing JSON:NaN
+
+Ready!
+Ready!
+Ready!
+Ready!
+Ready!
+Ready!

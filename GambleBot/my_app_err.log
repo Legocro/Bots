@@ -1,0 +1,15 @@
+events.js:173
+    throw err; // Unhandled 'error' event
+    ^
+
+Error [ERR_UNHANDLED_ERROR]: Unhandled error. ([object Object])
+    at DiscordClient.emit (events.js:171:17)
+    at WebSocketConnection.onError (/home/user/Bots/Bots/GambleBot/node_modules/discord.js/src/client/websocket/WebSocketConnection.js:374:17)
+    at WebSocket.onError (/home/user/Bots/Bots/GambleBot/node_modules/ws/lib/event-target.js:128:16)
+    at WebSocket.emit (events.js:182:13)
+    at _receiver.cleanup (/home/user/Bots/Bots/GambleBot/node_modules/ws/lib/websocket.js:211:14)
+    at Receiver.cleanup (/home/user/Bots/Bots/GambleBot/node_modules/ws/lib/receiver.js:557:13)
+    at WebSocket.finalize (/home/user/Bots/Bots/GambleBot/node_modules/ws/lib/websocket.js:206:20)
+    at TLSSocket.emit (events.js:182:13)
+    at emitErrorNT (internal/streams/destroy.js:82:8)
+    at emitErrorAndCloseNT (internal/streams/destroy.js:50:3)

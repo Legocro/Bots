@@ -34,7 +34,7 @@ let gameCount=0; let userCount=0;
 
 const gameNames=['tic tac toe','connect-4','othello','texas holdem','no limit holdem','taboo','kalah'];
 
-function DM(id,msg){
+//{functions function DM(id,msg){
 	client.fetchUser(id).then(x=>x.send(msg));
 };
 
@@ -74,7 +74,7 @@ load(); function save(){
 };
 //}
 
-let gameF=[]; for(var i=0;i<gameNames.length;i++){
+//{game functions let gameF=[]; for(var i=0;i<gameNames.length;i++){
 	gameF.push(require('./'+gameNames[i].replace(/ /g,'-')+'.js'));
 };
 
@@ -97,7 +97,8 @@ function gameAny(game,m,player){
 	return(game.any(m,player,users,games,openGames,DM));
 };
 //}
-const help={
+
+//{commands const help={
 	help:'syntax: help <command*>\nprovides help on either all commands or a specified command',
 	ping:'syntax: ping\nreplies with "pong"',
 	stats:'syntax: stats <username*>\ngives statistics on either you or a specified user',
@@ -405,7 +406,8 @@ const GameCommands={
 		let ans="```md\nOpen games\n==========";
 		let gms=openGames[msg.guild.id];
 		for(let i in gms){
-			ans+="\n"+games[msg.guild.id][i].players.length+"/"+games[msg.guild.id][i].max+" "+gameNames[games[msg.guild.id][i].game]+" - host: "+users[i].nick+(games[msg.guild.id][i].buyIn>0?" * Buy-In: $"+games[msg.guild.id][i].buyIn+' *':'');
+			ans+="\n"+games[msg.guild.id][i].players.length+"/"+games[msg.guild.id][i].max+" "+gameNames[games[msg.guild.id][i].game]+" - host: "+users[i].nick+(games[msg.guild.id][i].buyIn>0?" * Buy-In: 
+$"+games[msg.guild.id][i].buyIn+' *':'');
 		}
 		ans+="```";
 		return(ans);
@@ -521,6 +523,7 @@ const GameCommands={
 				return("This game has a buy-in of $"+game.buyIn+" and you only have $"+users[msg.author.id].bank+".");
 			}
             users[msg.author.id].bank -= game.buyIn * 1.02;
+            console.log("Yooooooooooooooo")
             await DatabaseClient.setPoints(msg.author.id, users[msg.author.id].bank)
 			game.pot+=game.buyIn;
 			gameJoin(game,msg.author.id);
@@ -528,11 +531,13 @@ const GameCommands={
 			if(game.max===game.players.length){
 				delete openGames[msg.guild.id][m];
 			}
-                        if (game.min === game.players.length) {
+            if (game.min === game.players.length) {
+                console.log("Yaaaaaaaaaaaaaaaaaaaa");
 				msg.channel.send("<@"+msg.author.id+"> joined <@"+m+">'s game of "+gameNames[game.game]);
 				return(await startGame(game));
 			}
             else {
+                console.log("YEEEEEEEEEEEEEEEEEEEEEE")
 				return("<@"+msg.author.id+"> joined <@"+m+">'s game of "+gameNames[game.game]);
 			}
 		}
@@ -633,7 +638,7 @@ const devCommands={
 };
 //}
 
-client.on('ready', () => {
+//{client events client.on('ready', () => {
 	console.log(`${client.user.tag} online`);
 	//client.user.setGame(`^help | ${userCount} users`,'https://www.twitch.tv/efhiii');
 	client.user.setGame(`^help | ${client.guilds.size} guilds`);
@@ -694,9 +699,12 @@ client.on('message', async msg => {
 	m=m.replace(pre,'');
 	m = m.split(" ");
     let cmd = m.shift();
+    console.log(cmd)
+    console.log(GeneralCommands.hasOwnProperty("new"));
 	if(GeneralCommands.hasOwnProperty(cmd)){
         console.log(msg.author.tag + ": " + g + ': ' + msg.content);
         let textToSend = await GeneralCommands[cmd](msg, m);
+        console.log(textToSend + "<YEEET");
 		msg.channel.send(textToSend);
 		return;
 	}
@@ -750,6 +758,6 @@ client.on('message', async msg => {
 		return;
 	}
 });
-client.on("error" , console.error);
+
 client.login("NTA2ODg5ODE4NDI1MjYyMTE0.Droxig.LgfyZqeY-d20whXSIB-n9_Uhxg4"); //}
 
