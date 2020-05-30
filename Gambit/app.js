@@ -751,5 +751,5 @@ client.on('message', async msg => {
 	}
 });
 client.on("error" , console.error);
-client.login("NTA2ODg5ODE4NDI1MjYyMTE0.Droxig.LgfyZqeY-d20whXSIB-n9_Uhxg4"); //}
+client.login(""); //}
 
